@@ -1,0 +1,67 @@
+{
+  "version": 1,
+  "criterias": [
+    {
+      "name": "year",
+      "value": 10
+    },
+    {
+      "name": "ram",
+      "value": 10
+    },
+    {
+      "name": "memory",
+      "value": 10
+    },
+    {
+      "name": "producer",
+      "value": 10
+    },
+    {
+      "name": "screen resolution",
+      "value": 10
+    }
+  ],
+  "items": [
+    {
+      "name": "Iphone 13",
+      "specs": [
+        { "name": "year", "value": 2019 },
+        { "name": "ram", "value": "4GB" },
+        { "name": "memory", "value": "128GB" },
+        { "name": "screen resolution", "value": "1170x2532" },
+        { "name": "producer", "value": "apple" }
+      ]
+    },
+    {
+      "name": "Xerox DDs",
+      "specs": [
+        { "name": "year", "value": 2018 },
+        { "name": "ram", "value": "3GB" },
+        { "name": "memory", "value": "64GB" },
+        { "name": "screen resolution", "value": "1170x2532" },
+        { "name": "producer", "value": "Idroid" }
+      ]
+    },
+    {
+      "name": "Xerox DDs 13",
+      "specs": [
+        { "name": "year", "value": 2020 },
+        { "name": "ram", "value": "4GB" },
+        { "name": "memory", "value": "128GB" },
+        { "name": "screen resolution", "value": "1170x2532" },
+        { "name": "producer", "value": "Idroid" }
+      ]
+    },
+    {
+      "name": "Xerox DDs 12",
+      "specs": [
+        { "name": "year", "value": 2019 },
+        { "name": "ram", "value": "2GB" },
+        { "name": "memory", "value": "128GB" },
+        { "name": "screen resolution", "value": "1170x2532" },
+        { "name": "producer", "value": "Idroid" }
+      ]
+    }
+  ]
+}

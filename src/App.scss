@@ -1,0 +1,31 @@
+@use "base.scss";
+
+.App {
+  display: flex;
+  flex-direction: column;
+  min-height: 1000px;
+  min-width: 600px;
+  background-color: base.$primary-bg-color;
+  header {
+    width: 100%;
+    height: 100px;
+    background-color: base.$secondary-bg-color;
+    h1 {
+      margin-left: 180px;
+      color: base.$secondary-color;
+    }
+  }
+  #main {
+    margin: 10px 10%;
+    // display: flex;
+    background-color: base.$main-bg-color;
+    border-radius: 30px;
+    padding: 30px 45px;
+  }
+  footer {
+    margin-top: auto;
+    width: 100%;
+    height: 100px;
+    background-color: base.$secondary-bg-color;
+  }
+}
