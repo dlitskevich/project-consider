@@ -1,4 +1,24 @@
-.criterion {
-  background-color: azure;
-  color: black;
+.specification {
+  display: flex;
+  justify-content: flex-end;
+}
+.specification-value {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-grow: 1;
+}
+
+.specification-selector {
+  .active {
+    background-color: gray;
+    color: white;
+  }
+  div {
+    justify-content: center;
+    display: flex;
+    align-items: center;
+    height: 25px;
+    width: 25px;
+  }
 }

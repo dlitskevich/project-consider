@@ -9,7 +9,7 @@ export type Item = {
   specs: Spec[];
 };
 
-type Spec = {
+export type Spec = {
   name: string;
   value: string | number;
   weight: number;

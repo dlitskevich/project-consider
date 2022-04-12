@@ -40,11 +40,13 @@ export const CriteriaSpecTable = ({ data }: Props) => {
             {selectedItems.map((item) => {
               const spec = item.specs.find(
                 (spec) => spec.name === criterion.name
-              ) || { name: "", value: "", weight: 1 };
+              ) || { name: criterion.name, value: "", weight: 0 };
               return (
                 <Specification
+                  itemName={item.name}
                   name={spec.name}
                   value={spec.value}
+                  weight={spec.weight}
                   key={item.name + spec.name}
                 />
               );

@@ -11,6 +11,8 @@ $table-even-th-bg-color: rgb(235, 235, 235);
   table-layout: fixed;
   display: block;
   overflow-x: auto;
+  overflow-y: auto;
+  height: 80vh;
   th,
   td {
     text-align: center;
@@ -22,7 +24,14 @@ $table-even-th-bg-color: rgb(235, 235, 235);
   thead tr {
     color: $table-header-color;
     th {
+      position: -webkit-sticky;
+      position: sticky;
+      top: 0;
+      z-index: 2;
       background-color: $table-header-bg-color;
+    }
+    th:first-child {
+      z-index: 3;
     }
   }
   tfoot th {
@@ -52,7 +61,7 @@ $table-even-th-bg-color: rgb(235, 235, 235);
     position: -webkit-sticky;
     position: sticky;
     left: 0;
-    //z-index: 2;
+    z-index: 1;
   }
 }
 .criterion {
@@ -64,7 +73,6 @@ $table-even-th-bg-color: rgb(235, 235, 235);
     flex-grow: 1;
   }
   .criterion-weight {
-    //border: 1px 0 1px 0;
     margin: 0 10px;
   }
 }
