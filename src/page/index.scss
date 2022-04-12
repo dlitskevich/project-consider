@@ -1,9 +1,9 @@
 $table-header-bg-color: rgb(184, 99, 99);
 $table-header-color: rgb(243, 243, 243);
-$table-odd-bg-color: rgb(251, 255, 197);
-$table-odd-th-bg-color: rgb(244, 254, 180);
-$table-even-bg-color: rgb(232, 248, 168);
-$table-even-th-bg-color: rgb(227, 249, 137);
+$table-odd-bg-color: rgb(255, 255, 255);
+$table-odd-th-bg-color: rgb(245, 245, 245);
+$table-even-bg-color: rgb(241, 241, 241);
+$table-even-th-bg-color: rgb(235, 235, 235);
 
 .criteria-spec-table {
   position: relative;
@@ -17,12 +17,17 @@ $table-even-th-bg-color: rgb(227, 249, 137);
     vertical-align: middle;
     min-width: 200px;
     height: 70px;
+    padding: 10px 10px;
   }
   thead tr {
     color: $table-header-color;
     th {
       background-color: $table-header-bg-color;
     }
+  }
+  tfoot th {
+    color: $table-header-color;
+    background-color: $table-header-bg-color;
   }
   tbody {
     tr:nth-child(odd) {
@@ -50,17 +55,16 @@ $table-even-th-bg-color: rgb(227, 249, 137);
     //z-index: 2;
   }
 }
-.criteria {
+.criterion {
   display: flex;
   align-items: center;
   justify-content: flex-end;
 
-  .criteria-name {
+  .criterion-name {
     flex-grow: 1;
   }
-  .criteria-value {
-    border: 1px 0 1px 0;
-    padding: 0 20px;
-    height: max-content;
+  .criterion-weight {
+    //border: 1px 0 1px 0;
+    margin: 0 10px;
   }
 }

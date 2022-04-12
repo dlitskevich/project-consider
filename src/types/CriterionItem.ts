@@ -1,10 +1,10 @@
-export type CriteriaItem = {
+export type CriterionItem = {
   version: number;
   items: Item[];
-  criterias: Criteria[];
+  criteria: Criterion[];
 };
 
-type Item = {
+export type Item = {
   name: string;
   specs: Spec[];
 };
@@ -12,9 +12,11 @@ type Item = {
 type Spec = {
   name: string;
   value: string | number;
+  weight: number;
 };
 
-type Criteria = {
+export type Criterion = {
   name: string;
-  value: number;
+  weight: number;
+  meta?: string;
 };

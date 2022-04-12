@@ -1,15 +1,15 @@
 import { useState } from "react";
-import { CriteriaItem } from "../types/CriteriaItem";
+import { CriterionItem } from "../types/CriterionItem";
 
 type Args = {
   url: string;
 };
 
 export const useFile = ({ url }: Args) => {
-  const [data, setData] = useState<CriteriaItem>();
+  const [data, setData] = useState<CriterionItem>();
   const [isLoading, setIsLoading] = useState(true);
   import(`../${url}`).then((data) => {
-    setData(data.default as CriteriaItem);
+    setData(data.default as CriterionItem);
     setIsLoading(false);
   });
 

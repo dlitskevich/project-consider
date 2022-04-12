@@ -1,13 +1,24 @@
 import React from "react";
-import { CriteriaItem } from "../types/CriteriaItem";
-import { Criteria } from "./Criteria";
+import { CriterionItem } from "../types/CriterionItem";
+import { Criterion } from "./Criterion";
+import { ResultChoice } from "./ResultChoice";
 import { Specification } from "./Specification";
 
+import { addCriteria } from "../redux/reducers/criteriaSlice";
+import { useAppDispatch, useAppSelector } from "../redux/hooks";
+import { addItem } from "../redux/reducers/itemsSlice";
+
 type Props = {
-  data: CriteriaItem;
+  data: CriterionItem;
 };
 export const CriteriaSpecTable = ({ data }: Props) => {
-  const selectedItems = data.items;
+  const dispatch = useAppDispatch();
+  data.criteria.forEach((crit) => dispatch(addCriteria(crit)));
+  data.items.forEach((item) => dispatch(addItem(item)));
+
+  const selectedItems = useAppSelector((state) => state.items.items);
+  const selectedCriteria = useAppSelector((state) => state.criteria.criteria);
+
   return (
     <table className="criteria-spec-table">
       <thead>
@@ -19,17 +30,17 @@ export const CriteriaSpecTable = ({ data }: Props) => {
         </tr>
       </thead>
       <tbody>
-        {data.criterias.map((criteria) => (
-          <tr key={criteria.name}>
-            <Criteria
-              name={criteria.name}
-              value={criteria.value}
-              key={criteria.name}
+        {selectedCriteria.map((criterion) => (
+          <tr key={criterion.name}>
+            <Criterion
+              name={criterion.name}
+              weight={criterion.weight}
+              key={criterion.name}
             />
             {selectedItems.map((item) => {
               const spec = item.specs.find(
-                (spec) => spec.name === criteria.name
-              ) || { name: "", value: "" };
+                (spec) => spec.name === criterion.name
+              ) || { name: "", value: "", weight: 1 };
               return (
                 <Specification
                   name={spec.name}
@@ -41,6 +52,18 @@ export const CriteriaSpecTable = ({ data }: Props) => {
           </tr>
         ))}
       </tbody>
+      <tfoot>
+        <tr>
+          <th>Result</th>
+          {selectedItems.map((item) => (
+            <ResultChoice
+              key={item.name}
+              item={item}
+              criteria={selectedCriteria}
+            />
+          ))}
+        </tr>
+      </tfoot>
     </table>
   );
 };

@@ -4,7 +4,7 @@ import { useFile } from "../hooks/useFile";
 import "./index.scss";
 
 export const CriteriaSpecPage = () => {
-  const data = useFile({ url: "__mock__/phones" });
+  const data = useFile({ url: "data/car" });
   if (data.isLoading) {
     return <p>Loading...</p>;
   }
