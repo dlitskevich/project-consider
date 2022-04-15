@@ -1,5 +1,5 @@
 import React from "react";
-import { CriterionItem } from "../types/CriterionItem";
+import { Item, CriterionItem, CriterionType } from "../types/CriterionItem";
 import { Criterion } from "./Criterion";
 import { ResultChoice } from "./ResultChoice";
 import { Specification } from "./Specification";
@@ -11,6 +11,7 @@ import { addItem } from "../redux/reducers/itemsSlice";
 type Props = {
   data: CriterionItem;
 };
+
 export const CriteriaSpecTable = ({ data }: Props) => {
   const dispatch = useAppDispatch();
   data.criteria.forEach((crit) => dispatch(addCriteria(crit)));
@@ -32,11 +33,7 @@ export const CriteriaSpecTable = ({ data }: Props) => {
       <tbody>
         {selectedCriteria.map((criterion) => (
           <tr key={criterion.name}>
-            <Criterion
-              name={criterion.name}
-              weight={criterion.weight}
-              key={criterion.name}
-            />
+            <Criterion criterion={criterion} key={criterion.name} />
             {selectedItems.map((item) => {
               const spec = item.specs.find(
                 (spec) => spec.name === criterion.name
@@ -54,18 +51,25 @@ export const CriteriaSpecTable = ({ data }: Props) => {
           </tr>
         ))}
       </tbody>
-      <tfoot>
-        <tr>
-          <th>Result</th>
-          {selectedItems.map((item) => (
-            <ResultChoice
-              key={item.name}
-              item={item}
-              criteria={selectedCriteria}
-            />
-          ))}
-        </tr>
-      </tfoot>
+      <Footer items={selectedItems} criteria={selectedCriteria} />
     </table>
+  );
+};
+
+type FooterProps = {
+  items: Item[];
+  criteria: CriterionType[];
+};
+
+const Footer = ({ items, criteria }: FooterProps) => {
+  return (
+    <tfoot>
+      <tr>
+        <th>Result</th>
+        {items.map((item) => (
+          <ResultChoice key={item.name} item={item} criteria={criteria} />
+        ))}
+      </tr>
+    </tfoot>
   );
 };

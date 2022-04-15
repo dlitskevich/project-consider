@@ -1,7 +1,7 @@
 export type CriterionItem = {
   version: number;
   items: Item[];
-  criteria: Criterion[];
+  criteria: CriterionType[];
 };
 
 export type Item = {
@@ -15,8 +15,9 @@ export type Spec = {
   weight: number;
 };
 
-export type Criterion = {
+export type CriterionType = {
   name: string;
   weight: number;
   meta?: string;
+  type: string;
 };

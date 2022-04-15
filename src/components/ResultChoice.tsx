@@ -1,9 +1,9 @@
 import React from "react";
-import { Criterion, Item } from "../types/CriterionItem";
+import { CriterionType, Item } from "../types/CriterionItem";
 
 type Props = {
   item: Item;
-  criteria: Criterion[];
+  criteria: CriterionType[];
 };
 
 export const ResultChoice = ({ item, criteria }: Props) => {
@@ -13,7 +13,7 @@ export const ResultChoice = ({ item, criteria }: Props) => {
   return <td className="result-choice">{res}</td>;
 };
 
-const getItemWeight = (item: Item, criteria: Criterion) => {
+const getItemWeight = (item: Item, criteria: CriterionType) => {
   const spec = item.specs.find((v) => v.name === criteria.name);
   if (spec) {
     return spec.weight;

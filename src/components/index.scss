@@ -1,6 +1,10 @@
+@use "../base.scss";
+
 .specification {
   display: flex;
   justify-content: flex-end;
+  align-items: center;
+  height: 100%;
 }
 .specification-value {
   display: flex;
@@ -11,14 +15,52 @@
 
 .specification-selector {
   .active {
-    background-color: gray;
-    color: white;
+    visibility: visible;
   }
   div {
+    visibility: hidden;
+    color: base.$white;
     justify-content: center;
     display: flex;
     align-items: center;
     height: 25px;
     width: 25px;
+    font-weight: bold;
+  }
+}
+
+.specification:hover .specification-selector {
+  .active {
+    background-color: base.$active-bg;
+  }
+  div {
+    visibility: visible;
+  }
+}
+
+.specification-selector-good {
+  background-color: base.$success;
+}
+
+.specification-selector-ok {
+  background-color: base.$warning;
+}
+
+.specification-selector-bad {
+  background-color: base.$error;
+}
+
+.result-choice {
+  background-color: base.$warning;
+  color: base.$white;
+  font-weight: bold;
+  .good {
+    background-color: base.$success;
+  }
+  .ok {
+    background-color: base.$warning;
+  }
+  .bad {
+    background-color: base.$error;
   }
 }
