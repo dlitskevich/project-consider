@@ -8,3 +8,19 @@ $warning: rgb(249, 170, 51);
 $error: rgb(160, 0, 40);
 $active-bg: rgb(85, 153, 255);
 $white: #fff;
+
+@keyframes kf-color-mix {
+  0% {
+    background-color: #{$error};
+  }
+  80% {
+    background-color: #{$warning};
+  }
+  100% {
+    background-color: #{$success};
+  }
+}
+
+@function color-mix($percent) {
+  @return kf-color-mix 1s calc(-1s * #{$percent}) linear forwards paused;
+}

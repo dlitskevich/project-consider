@@ -51,16 +51,17 @@
 }
 
 .result-choice {
-  background-color: base.$warning;
+  --goodness: 50;
+  animation: base.color-mix(var(--goodness));
   color: base.$white;
   font-weight: bold;
-  .good {
-    background-color: base.$success;
-  }
-  .ok {
-    background-color: base.$warning;
-  }
-  .bad {
-    background-color: base.$error;
-  }
+  // .good {
+  //   background-color: base.$success;
+  // }
+  // .ok {
+  //   background-color: base.$warning;
+  // }
+  // .bad {
+  //   background-color: base.$error;
+  // }
 }

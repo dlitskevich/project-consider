@@ -1,7 +1,7 @@
 import React from "react";
-import { Item, CriterionItem, CriterionType } from "../types/CriterionItem";
+import { CriterionItem } from "../types/CriterionItem";
 import { Criterion } from "./Criterion";
-import { ResultChoice } from "./ResultChoice";
+import { CriteriaSpecFooter } from "./CriteriaSpecFooter";
 import { Specification } from "./Specification";
 
 import { addCriteria } from "../redux/reducers/criteriaSlice";
@@ -51,25 +51,7 @@ export const CriteriaSpecTable = ({ data }: Props) => {
           </tr>
         ))}
       </tbody>
-      <Footer items={selectedItems} criteria={selectedCriteria} />
+      <CriteriaSpecFooter items={selectedItems} criteria={selectedCriteria} />
     </table>
-  );
-};
-
-type FooterProps = {
-  items: Item[];
-  criteria: CriterionType[];
-};
-
-const Footer = ({ items, criteria }: FooterProps) => {
-  return (
-    <tfoot>
-      <tr>
-        <th>Result</th>
-        {items.map((item) => (
-          <ResultChoice key={item.name} item={item} criteria={criteria} />
-        ))}
-      </tr>
-    </tfoot>
   );
 };
