@@ -10,9 +10,16 @@
     width: 100%;
     height: 100px;
     background-color: base.$secondary-bg-color;
+    transition: top 0.3s;
+    top: 0;
+    display: flex;
+    align-items: center;
     h1 {
-      margin-left: 180px;
       color: base.$secondary-color;
+    }
+    #logo {
+      height: 75%;
+      margin: 0 30px;
     }
   }
   #main {

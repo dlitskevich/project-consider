@@ -17,7 +17,7 @@ export const SpecificationSelector = ({ setWeight, weight }: Props) => {
         <div
           key={w.type}
           className={
-            "specification-selector" +
+            "specification-weight" +
             " " +
             w.type +
             " " +

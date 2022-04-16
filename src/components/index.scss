@@ -22,6 +22,7 @@
   background-color: base.$active-bg;
   font-weight: bold;
   top: 0;
+  padding: 0 5px;
 }
 
 .specification-selector {
@@ -30,13 +31,6 @@
   }
   div {
     visibility: hidden;
-    color: base.$white;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 25px;
-    width: 25px;
-    font-weight: bold;
   }
   .good {
     background-color: base.$success;

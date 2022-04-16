@@ -28,9 +28,9 @@ const boolFunc = (parameters: { true?: string[]; false?: string[] }) => {
       return 1;
     }
     if (boolValues.false.includes(testValue)) {
-      return -1;
+      return 0;
     }
-    return testValue === "" ? -1 : 1;
+    return testValue === "" ? 0 : 1;
   };
 };
 

@@ -26,7 +26,9 @@ export const Specification = ({ itemName, spec, isCustom }: Props) => {
         ) : (
           <>
             <div className="specification-weight">
-              {spec.weight.toPrecision(2)}
+              {Number.isInteger(spec.weight)
+                ? spec.weight
+                : spec.weight.toPrecision(2)}
             </div>
           </>
         )}
