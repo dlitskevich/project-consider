@@ -1,0 +1,2 @@
+"use strict";(self.webpackChunkmy_app=self.webpackChunkmy_app||[]).push([[490],{31490:function(e,t,r){r.r(t);r(72791);var i=r(99607),n=r(52117),c=r(80184);test("renders Criterion text",(function(){(0,i.sY)((0,c.jsx)(n.Criterion,{criterion:{name:"criteria",weight:1,type:"custom"}}));var e=i.sp.getByText(/criteria/i);expect(e).toBeInTheDocument()}))}}]);
+//# sourceMappingURL=490.a18e14e1.chunk.js.map
