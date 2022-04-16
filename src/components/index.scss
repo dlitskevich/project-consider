@@ -12,6 +12,17 @@
   align-items: center;
   flex-grow: 1;
 }
+.specification-weight {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 25px;
+  min-width: 25px;
+  color: base.$white;
+  background-color: base.$active-bg;
+  font-weight: bold;
+  top: 0;
+}
 
 .specification-selector {
   .active {
@@ -20,12 +31,21 @@
   div {
     visibility: hidden;
     color: base.$white;
-    justify-content: center;
     display: flex;
+    justify-content: center;
     align-items: center;
     height: 25px;
     width: 25px;
     font-weight: bold;
+  }
+  .good {
+    background-color: base.$success;
+  }
+  .ok {
+    background-color: base.$warning;
+  }
+  .bad {
+    background-color: base.$error;
   }
 }
 
@@ -38,30 +58,9 @@
   }
 }
 
-.specification-selector-good {
-  background-color: base.$success;
-}
-
-.specification-selector-ok {
-  background-color: base.$warning;
-}
-
-.specification-selector-bad {
-  background-color: base.$error;
-}
-
 .result-choice {
   --goodness: 50;
   animation: base.color-mix(var(--goodness));
   color: base.$white;
   font-weight: bold;
-  // .good {
-  //   background-color: base.$success;
-  // }
-  // .ok {
-  //   background-color: base.$warning;
-  // }
-  // .bad {
-  //   background-color: base.$error;
-  // }
 }

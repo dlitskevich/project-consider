@@ -15,7 +15,7 @@ export const Criterion = ({ criterion }: Props) => {
     weight: string
   ) => {
     const newWeight =
-      weight === "" ? 0 : Math.min(Math.max(parseInt(weight), 0), 100);
+      weight === "" ? 0 : Math.min(Math.max(parseInt(weight), 0), 9);
     dispatch(
       setCriteriaWeight({
         ...criterion,
@@ -34,7 +34,7 @@ export const Criterion = ({ criterion }: Props) => {
             className="criterion-weight"
             value={criterion.weight}
             min={0}
-            max={100}
+            max={9}
             onChange={(e) => setWeight(e, e.target.value)}
           />
         </div>

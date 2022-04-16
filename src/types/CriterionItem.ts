@@ -11,7 +11,7 @@ export type Item = {
 
 export type Spec = {
   name: string;
-  value: string | number;
+  value: string;
   weight: number;
 };
 
@@ -21,3 +21,9 @@ export type CriterionType = {
   meta?: string;
   type: string;
 };
+
+export enum Crit {
+  bool,
+  linear,
+  normal,
+}

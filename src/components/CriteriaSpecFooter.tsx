@@ -1,4 +1,5 @@
 import React from "react";
+import { toStandart } from "../functions/math";
 import { CriterionType, Item } from "../types/CriterionItem";
 import { ResultChoice } from "./ResultChoice";
 
@@ -20,13 +21,6 @@ export const CriteriaSpecFooter = ({ items, criteria }: FooterProps) => {
       </tr>
     </tfoot>
   );
-};
-
-const toStandart = (array: number[]) => {
-  const min = Math.min(...array);
-  const max = Math.max(...array);
-  const delta = max - min;
-  return (e: number) => (e - min) / delta;
 };
 
 const getItemResult = (item: Item, criteria: CriterionType[]) => {

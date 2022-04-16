@@ -1,47 +1,64 @@
-export const criterionSpecWeight = (
-  value: string,
-  type: "bool" | "linear" | "gauss"
-) => {
+import { Crit, Spec } from "../types/CriterionItem";
+
+export const criterionSpecWeight = (values: string[], type: string) => {
+  const crit = Crit[type as keyof typeof Crit];
+  const data = values.map((v) => (isNaN(parseFloat(v)) ? 0 : parseFloat(v)));
   const functionTypes = {
-    bool: boolFunc,
-    linear: linearFunc,
-    gauss: gaussFunc,
+    [Crit.bool]: boolFunc({}),
+    [Crit.linear]: linearFunc(data),
+    [Crit.normal]: normalFunc(data),
   };
-  return functionTypes[type];
+  // eslint-disable-next-line @typescript-eslint/strict-boolean-expressions
+  if (!functionTypes[crit]) {
+    return (spec: Spec) => spec.weight;
+  }
+
+  return functionTypes[crit];
 };
 
-const boolFunc = (
-  value: string,
-  parameters: { true: string[]; false: string[] }
-) => {
+const boolFunc = (parameters: { true?: string[]; false?: string[] }) => {
   const boolValues = {
-    true: ["да"].concat(parameters.true),
-    false: ["нет"].concat(parameters.false),
+    true: ["да"].concat(parameters.true ? parameters.true : []),
+    false: ["нет"].concat(parameters.false ? parameters.false : []),
   };
-  const testValue = value.toLowerCase().trim();
-  if (boolValues.true.includes(testValue)) {
-    return true;
-  }
-  if (boolValues.false.includes(testValue)) {
-    return false;
-  }
-  return testValue === "" ? false : true;
+
+  return (spec: Spec) => {
+    const testValue = spec.value.toLowerCase().trim();
+    if (boolValues.true.includes(testValue)) {
+      return 1;
+    }
+    if (boolValues.false.includes(testValue)) {
+      return -1;
+    }
+    return testValue === "" ? -1 : 1;
+  };
 };
-const linearFunc = (value: string, parameters = { a: 1, b: 0 }) => {
-  try {
-    const testValue = parseInt(value);
-    return parameters.a * testValue + parameters.b;
-  } catch {
-    return parameters.b;
-  }
+
+// const boolFuncP = (
+//   value: string,
+//   parameters: { true: string[]; false: string[] }
+// ) => {};
+
+const linearFunc = (data: number[]) => {
+  const min = Math.min(...data);
+  const max = Math.max(...data);
+  const mean = (max - min) / data.length;
+  const a = Math.max(mean - min, max - mean);
+  return (spec: Spec) => {
+    const testValue = parseFloat(spec.value);
+    return isNaN(testValue) ? mean / a : (testValue - mean) / a;
+  };
 };
-const gaussFunc = (value: string, parameters = { mean: 0, s: 1 }) => {
-  try {
-    const testValue = parseInt(value);
-    return (testValue - parameters.mean) / parameters.mean;
-  } catch {
-    return parameters.mean;
-  }
+
+const normalFunc = (data: number[]) => {
+  const min = Math.min(...data);
+  const max = Math.max(...data);
+  const mean = (max - min) / data.length;
+  const a = Math.max(mean - min, max - mean);
+  return (spec: Spec) => {
+    const testValue = parseFloat(spec.value);
+    return isNaN(testValue) ? mean / a : (testValue - mean) / a;
+  };
 };
 
 // type boolArgs = {

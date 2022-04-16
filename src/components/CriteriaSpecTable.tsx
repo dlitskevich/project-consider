@@ -1,12 +1,12 @@
 import React from "react";
-import { CriterionItem } from "../types/CriterionItem";
-import { Criterion } from "./Criterion";
 import { CriteriaSpecFooter } from "./CriteriaSpecFooter";
-import { Specification } from "./Specification";
+import { useAppDispatch, useAppSelector } from "../redux/hooks";
 
 import { addCriteria } from "../redux/reducers/criteriaSlice";
-import { useAppDispatch, useAppSelector } from "../redux/hooks";
 import { addItem } from "../redux/reducers/itemsSlice";
+
+import { CriteriaSpecRow } from "./CriteriaSpecRow";
+import { CriterionItem } from "../types/CriterionItem";
 
 type Props = {
   data: CriterionItem;
@@ -32,23 +32,11 @@ export const CriteriaSpecTable = ({ data }: Props) => {
       </thead>
       <tbody>
         {selectedCriteria.map((criterion) => (
-          <tr key={criterion.name}>
-            <Criterion criterion={criterion} key={criterion.name} />
-            {selectedItems.map((item) => {
-              const spec = item.specs.find(
-                (spec) => spec.name === criterion.name
-              ) || { name: criterion.name, value: "", weight: 0 };
-              return (
-                <Specification
-                  itemName={item.name}
-                  name={spec.name}
-                  value={spec.value}
-                  weight={spec.weight}
-                  key={item.name + spec.name}
-                />
-              );
-            })}
-          </tr>
+          <CriteriaSpecRow
+            key={criterion.name}
+            criterion={criterion}
+            items={selectedItems}
+          />
         ))}
       </tbody>
       <CriteriaSpecFooter items={selectedItems} criteria={selectedCriteria} />

@@ -7,18 +7,19 @@ type Props = {
 
 export const SpecificationSelector = ({ setWeight, weight }: Props) => {
   const weights = [
-    { value: 1, text: "good" },
-    { value: 0, text: "ok" },
-    { value: -1, text: "bad" },
+    { value: 1, type: "good" },
+    { value: 0, type: "ok" },
+    { value: -1, type: "bad" },
   ];
   return (
     <div className="specification-selector">
       {weights.map((w) => (
         <div
-          key={w.text}
+          key={w.type}
           className={
-            "specification-selector-" +
-            w.text +
+            "specification-selector" +
+            " " +
+            w.type +
             " " +
             (weight === w.value ? "active" : "")
           }
